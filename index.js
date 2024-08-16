@@ -17,6 +17,38 @@ app.use(express.static('public'));
 app.get("/", function (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
+app.get("/api/:date",(req,res)=>{{
+  try{
+    let date=req.params.date;
+    const regex = /^\d+$/;
+    let response;
+
+    if(regex.test(date)){
+        const dateInt = parseInt(date);
+        const dateObj = new Date(dateInt);
+        response = {
+            unix: dateInt,
+            utc: dateObj.toUTCString()
+        }
+        return res.json(response)
+        
+    }
+    const dateObj = new Date(date);
+    response={
+        unix: dateObj.getTime(),
+        utc: dateObj.toUTCString()
+    }
+    return res.json(response)
+    
+}catch(e){
+    return res.json({
+        error: "Invalid Date"
+    })
+
+}
+}
+
+})
 
 
 // your first API endpoint... 

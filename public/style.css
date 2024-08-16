@@ -3,8 +3,8 @@
 body {
 	font-family: 'Roboto', sans-serif;
 	font-size: 16px;
-	color: #222;
-	background-color: #FaFaFa;
+	color: #508C9B;
+	background-color: #201E43;
 	text-align: center;
 	line-height: 1.4em;
 }
@@ -29,8 +29,8 @@ hr {
 code {
   font-family: monospace;
   padding: 2px;
-  color: black;
-  background-color: #fff;
+  color: #EEEEEE;
+  
 }
 
 ul {
@@ -42,5 +42,5 @@ li {
 }
 
 a {
-	color: #2574A9;
+	color: #EEEEEE;
 }
