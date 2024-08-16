@@ -26,6 +26,11 @@ app.get("/api/:date",(req,res)=>{{
     if(regex.test(date)){
         const dateInt = parseInt(date);
         const dateObj = new Date(dateInt);
+        if(dateObj.toString() === "Invalid Date"){
+            return res.status(500).json({
+                error: "Invalid Date"
+            })
+        }
         response = {
             unix: dateInt,
             utc: dateObj.toUTCString()
@@ -34,15 +39,22 @@ app.get("/api/:date",(req,res)=>{{
         
     }
     const dateObj = new Date(date);
+    if(dateObj.toString() === "Invalid Date"){
+        return res.status(500).json({
+            error: "Invalid Date"
+        })
+    }
     response={
         unix: dateObj.getTime(),
         utc: dateObj.toUTCString()
     }
     return res.json(response)
+
+
     
 }catch(e){
     return res.json({
-        error: "Invalid Date"
+        error : "Invalid Date"
     })
 
 }
