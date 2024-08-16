@@ -49,6 +49,13 @@ app.get("/api/:date",(req,res)=>{{
 }
 
 })
+app.get("/api",(req,res)=>{
+  const dateObj = new Date();
+  res.json({
+      unix: dateObj.getTime(),
+      utc: dateObj.toUTCString()
+  })
+})
 
 
 // your first API endpoint... 
